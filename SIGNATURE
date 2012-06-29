@@ -1,0 +1,73 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 cf91bea721417e2f5b61e1d3d48ff5640fe3e6fd Changes
+SHA1 cc087c3dd6e1b519c680e68cd0231735a68300a0 LICENSE
+SHA1 ddffd85849223d9adec08e8e16402220fb553f64 MANIFEST
+SHA1 f779b8d9e07aa74a294d33dd4b678835995a85a5 META.yml
+SHA1 7150e5e086ef493e1e527a1eeec44a8344b80db6 Makefile.PL
+SHA1 978024c614c1d587c70cb28a4f21694d2a64ec6e README
+SHA1 043e58892b605651d171dea406d017ab128eadf4 bin/p5u
+SHA1 06c410f05488c1612ed66b06d3a86b2580581e4a inc/Module/AutoInstall.pm
+SHA1 8a924add836b60fb23b25c8506d45945e02f42f4 inc/Module/Install.pm
+SHA1 61ab1dd37e33ddbe155907ce51df8a3e56ac8bbf inc/Module/Install/AutoInstall.pm
+SHA1 c04f94f91fa97b9f8cfb5a36071098ab0e6c78e3 inc/Module/Install/AutoManifest.pm
+SHA1 2d0fad3bf255f8c1e7e1e34eafccc4f595603ddc inc/Module/Install/Base.pm
+SHA1 f0e01fff7d73cd145fbf22331579918d4628ddb0 inc/Module/Install/Can.pm
+SHA1 7328966e4fda0c8451a6d3850704da0b84ac1540 inc/Module/Install/Fetch.pm
+SHA1 66d3d335a03492583a3be121a7d888f63f08412c inc/Module/Install/Include.pm
+SHA1 b62ca5e2d58fa66766ccf4d64574f9e1a2250b34 inc/Module/Install/Makefile.pm
+SHA1 1aa925be410bb3bfcd84a16985921f66073cc1d2 inc/Module/Install/Metadata.pm
+SHA1 3b9281ddf7dd6d6f5de0a9642c69333023193c80 inc/Module/Install/Package.pm
+SHA1 4d793c044726e06fe35d8d129b76da2803377f92 inc/Module/Install/Scripts.pm
+SHA1 b86d0385e10881db680d28bde94f275e49e34a27 inc/Module/Install/TrustMetaYml.pm
+SHA1 e4196994fa75e98bdfa2be0bdeeffef66de88171 inc/Module/Install/Win32.pm
+SHA1 c3a6d0d5b84feb3280622e9599e86247d58b0d18 inc/Module/Install/WriteAll.pm
+SHA1 26d58a041cd6b3d21db98b32e8fd1841aae21204 inc/Module/Package.pm
+SHA1 6b807287940754cc31a3db59f2b22e363d5525be inc/Module/Package/Dist/RDF.pm
+SHA1 e31c281782183601e1e057c5914f63269e043932 inc/Scalar/Util.pm
+SHA1 5eae2f71c45a996a296d2445b18d0589307111f0 inc/Scalar/Util/PP.pm
+SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
+SHA1 8105c0510a773b56840995fb4dd2dc64fe9ddaee inc/unicore/Name.pm
+SHA1 40b62b99738c3ad2e0f9f984c5b9c7a1205489b2 lib/P5U.pm
+SHA1 88138f1b5336fd149f4dc588634a28fa3d236c50 lib/P5U/Command.pm
+SHA1 a76269467927db4d75b96e429b3a3590134f2b8a lib/P5U/Command/About.pm
+SHA1 fbd733b103cf3774a361ee6e1a0a143be2610e53 lib/P5U/Command/Aliases.pm
+SHA1 355346546acbd695c73663f81c60702f4134a3d1 lib/P5U/Command/AutoProve.pm
+SHA1 27d334d604799f00cd435094ce000a0b87830990 lib/P5U/Command/Commands.pm
+SHA1 3f932db4dc9545960d9c85563274c4fa5466e320 lib/P5U/Command/DebianRelease.pm
+SHA1 eb01219ff98d9ce1c8d425152bb7818ed8716af2 lib/P5U/Command/Reprove.pm
+SHA1 9294ff4e26392ee2aa42fb8e27cdfffedd339228 lib/P5U/Command/TestPod.pm
+SHA1 5da4ecb2659240786416b10601c4e61eb93003aa lib/P5U/Command/Testers.pm
+SHA1 325e2ae43700f866a85cc0c762b3b657001c4042 lib/P5U/Command/Version.pm
+SHA1 6803b97422670d1a14008a99d15a0243b8ac6baa lib/P5U/Lib/AutoProve.pm
+SHA1 a65e40d109b58c9d8bcd73ef5a501e78357e6e95 lib/P5U/Lib/DebianRelease.pm
+SHA1 ca620f61d1d05cfb06fa5e0fc089e1ac449f1934 lib/P5U/Lib/Reprove.pm
+SHA1 ccb6e806b26a561df286806a7f85260647626128 lib/P5U/Lib/TestPod.pm
+SHA1 6f10a5a931fc4f205a7f83ba86d659fe3398ea13 lib/P5U/Lib/Testers.pm
+SHA1 fe56389026bbe64b9343a5fa162f863766a3bd73 lib/P5U/Lib/Version.pm
+SHA1 663efaa2787f6ab0551562714e85224dcd6ed92c lib/P5U/Tutorial/Development.pod
+SHA1 2a7bacd1d4c64aa0d76cc67f8fbe39cd0dd009f5 meta/changes.ttl
+SHA1 54f8f399f6d2328b5360ca795b1fd5c7752a9c87 meta/doap.ttl
+SHA1 29ee882e8b19c84b3a79e8b7f8038144aff05178 meta/makefile.ttl
+SHA1 c91a041cceaafb04b17655614f5357d7069f5645 t/01basic.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iEYEARECAAYFAk/uH7QACgkQzr+BKGoqfTmrqwCdEZAa9AZPV0Jum8298F81QiqQ
+YzMAn2Sx1Cb7iuPg8EOY04F6vR9t6BFX
+=fV5Z
+-----END PGP SIGNATURE-----
