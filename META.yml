@@ -45,4 +45,4 @@ resources:
   homepage: https://metacpan.org/release/P5U
   license: http://dev.perl.org/licenses/
   repository: https://bitbucket.org/tobyink/p5-p5u
-version: 0.001
+version: 0.002

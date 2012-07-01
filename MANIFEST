@@ -32,12 +32,14 @@ lib/P5U/Command/Reprove.pm
 lib/P5U/Command/Testers.pm
 lib/P5U/Command/TestPod.pm
 lib/P5U/Command/Version.pm
+lib/P5U/Command/Whois.pm
 lib/P5U/Lib/AutoProve.pm
 lib/P5U/Lib/DebianRelease.pm
 lib/P5U/Lib/Reprove.pm
 lib/P5U/Lib/Testers.pm
 lib/P5U/Lib/TestPod.pm
 lib/P5U/Lib/Version.pm
+lib/P5U/Lib/Whois.pm
 lib/P5U/Tutorial/Development.pod
 LICENSE
 Makefile.PL
@@ -48,4 +50,5 @@ meta/doap.ttl
 meta/makefile.ttl
 README
 t/01basic.t
+TODO
 SIGNATURE                                Public-key signature (added by MakeMaker)
