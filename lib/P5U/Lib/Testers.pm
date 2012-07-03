@@ -5,7 +5,7 @@ use utf8;
 
 BEGIN {
 	$P5U::Lib::Testers::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::Testers::VERSION   = '0.002';
+	$P5U::Lib::Testers::VERSION   = '0.003';
 };
 
 use Any::Moose       0;
@@ -172,7 +172,7 @@ __END__
 
 =head1 NAME
 
-P5U::Lib::Testers - support library implementing p5u's debian-release command
+P5U::Lib::Testers - support library implementing p5u's testers command
 
 =head1 SYNOPSIS
 

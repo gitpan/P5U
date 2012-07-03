@@ -14,14 +14,14 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 3422ce44cd19b4f8597052b9be886e3c2c1e5dd5 Changes
+SHA1 99be85733564225bdbcd0f1d24a75e50538c9c93 Changes
 SHA1 cc087c3dd6e1b519c680e68cd0231735a68300a0 LICENSE
 SHA1 930465a66ee3fb5ae5d4b48802633c2a4008fa8d MANIFEST
-SHA1 f483f480de6a026032601caf0abcb82859c4f1b5 META.yml
+SHA1 410514b2b95f452aa40dccb7a027a5fbdb6e29a4 META.yml
 SHA1 7150e5e086ef493e1e527a1eeec44a8344b80db6 Makefile.PL
 SHA1 299a98534c478ed6c3ea2d487667dee02a87fe30 README
 SHA1 a357506e1e49e01ab813922cf7e836b259fe87e1 TODO
-SHA1 3c0ebb0346a81c0525103156b72b9eb5d278875f bin/p5u
+SHA1 aa40eec0abdf56ea965fcc2f5f8a808611feba92 bin/p5u
 SHA1 06c410f05488c1612ed66b06d3a86b2580581e4a inc/Module/AutoInstall.pm
 SHA1 8a924add836b60fb23b25c8506d45945e02f42f4 inc/Module/Install.pm
 SHA1 61ab1dd37e33ddbe155907ce51df8a3e56ac8bbf inc/Module/Install/AutoInstall.pm
@@ -43,34 +43,34 @@ SHA1 e31c281782183601e1e057c5914f63269e043932 inc/Scalar/Util.pm
 SHA1 5eae2f71c45a996a296d2445b18d0589307111f0 inc/Scalar/Util/PP.pm
 SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
 SHA1 8105c0510a773b56840995fb4dd2dc64fe9ddaee inc/unicore/Name.pm
-SHA1 265071b4c12a349ffb2edf7a937741924194f189 lib/P5U.pm
+SHA1 154d24dd761ae99be3608d95b30c1d81f38225d0 lib/P5U.pm
 SHA1 88138f1b5336fd149f4dc588634a28fa3d236c50 lib/P5U/Command.pm
-SHA1 94cd28e2acf9185cfab30d243fce69da0a97793a lib/P5U/Command/About.pm
-SHA1 cab762e94d59db59ee2dd65fe83a4c7c4022c8d2 lib/P5U/Command/Aliases.pm
-SHA1 cc737f8e0d952b77b50c1837557f3c42d8d7ba31 lib/P5U/Command/AutoProve.pm
-SHA1 4b71d25494998d3e8257745742eab2680c80a71a lib/P5U/Command/Commands.pm
-SHA1 eb8f8b7bc90147d9a66dc2cc6d94fce0563c3c1f lib/P5U/Command/DebianRelease.pm
-SHA1 ea48a22da831ed4d6924f2c023c0ecf4321727fb lib/P5U/Command/Reprove.pm
-SHA1 fdef71cfac919b712900b8605258bef5e3671e8b lib/P5U/Command/TestPod.pm
-SHA1 4c1328f74aaeb064492017d8fcbf421cd9bbc2b5 lib/P5U/Command/Testers.pm
-SHA1 3ce708eda0285d1ef813432376264e081a3ff411 lib/P5U/Command/Version.pm
-SHA1 882fcb30c582794e9d6291dc7fe726ea84618a3b lib/P5U/Command/Whois.pm
-SHA1 a54bf7037e8ed40f673b616f2e418ac428b2275a lib/P5U/Lib/AutoProve.pm
-SHA1 5e87c244bbf0a282d82449885af6c777eee91a09 lib/P5U/Lib/DebianRelease.pm
-SHA1 6a7c3490d8fa982cf8e6e1c825a32e32a9371c5b lib/P5U/Lib/Reprove.pm
-SHA1 47e5dc42cdf284d3adf941f9efb3fdeec69c5f70 lib/P5U/Lib/TestPod.pm
-SHA1 a588fcea8531c963b3bff459933f890fc6ab9f93 lib/P5U/Lib/Testers.pm
-SHA1 3e10c3bf47d569becff85a9796bf5aa9a102f171 lib/P5U/Lib/Version.pm
-SHA1 510ab89e73806aae9c3952bc0353a3037e631f8a lib/P5U/Lib/Whois.pm
+SHA1 ec0b26b923fef5af93a10e93b83b2b1924bac98a lib/P5U/Command/About.pm
+SHA1 016579dfbac3c109e02b3a64c5c02718c53a48e2 lib/P5U/Command/Aliases.pm
+SHA1 ac956c6f251f90e3aac0fd11d9a6176ebe1e3723 lib/P5U/Command/AutoProve.pm
+SHA1 89880710a60d4583d7603508a34be6c6ceff9120 lib/P5U/Command/Commands.pm
+SHA1 7c1bf326e0ada40873bf9a85cb8c7f6bd50d6d76 lib/P5U/Command/DebianRelease.pm
+SHA1 c14d77c2ade700b99fda59d15610365480cc5b46 lib/P5U/Command/Reprove.pm
+SHA1 d241ab9d7c4c3ff25d86b8d94d4f243866041f91 lib/P5U/Command/TestPod.pm
+SHA1 8333476a8cdeeac95a98dfe3fda83e65f4da0834 lib/P5U/Command/Testers.pm
+SHA1 6c79968745c2f2b4f4753c52a8cd36e71531113b lib/P5U/Command/Version.pm
+SHA1 a6597fd03737647591aea44bd3b6a22cd6f1ae00 lib/P5U/Command/Whois.pm
+SHA1 5aca1eee89094fb087c02b111bd705926bccb2c4 lib/P5U/Lib/AutoProve.pm
+SHA1 f8df80dc2529f8ee94dc4998141606e737ec7692 lib/P5U/Lib/DebianRelease.pm
+SHA1 2334f4bb8688a01752b2d2f3d17efcd4b962ce31 lib/P5U/Lib/Reprove.pm
+SHA1 29388240277d9d33dfcf209389fbf36ae91b5a1a lib/P5U/Lib/TestPod.pm
+SHA1 e89df7c31e9f36722b5e660927c4fa0ab28b5f63 lib/P5U/Lib/Testers.pm
+SHA1 d0514c7b7eed87755605d7d1fa2c056360ad2a46 lib/P5U/Lib/Version.pm
+SHA1 d7a7e755ea8ff4b1bedbf6f6edd6a3742896544d lib/P5U/Lib/Whois.pm
 SHA1 663efaa2787f6ab0551562714e85224dcd6ed92c lib/P5U/Tutorial/Development.pod
-SHA1 dc3516fd361b283f4446a395c24e0f7f36121039 meta/changes.ttl
+SHA1 a7fcf23c7a82a87dfbb566a55d81f46ae22c9520 meta/changes.ttl
 SHA1 54f8f399f6d2328b5360ca795b1fd5c7752a9c87 meta/doap.ttl
 SHA1 29ee882e8b19c84b3a79e8b7f8038144aff05178 meta/makefile.ttl
 SHA1 c91a041cceaafb04b17655614f5357d7069f5645 t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAk/vl/MACgkQzr+BKGoqfTm3iwCgllJA7RZrKZGtuxUi85bRQ45L
-8eMAn1rHQxwSomhInkfa27b1bQUtQz/y
-=rKxV
+iEYEARECAAYFAk/yr/MACgkQzr+BKGoqfTl5SwCcC1dMJSlW6HQ8Kk2NkizTdZbs
+jccAoJBq6YjGnJWIc08NhvC3SchfbOPU
+=NpQV
 -----END PGP SIGNATURE-----
