@@ -32,11 +32,11 @@ requires:
   Module::Info: 0
   Module::Manifest: 0
   Moo: 1.000000
+  MooX::Types::MooseLike::Base: 0
   Object::AUTHORITY: 0
   Path::Class: 0
   Path::Class::Rule: 0
   PerlX::Maybe: 0
-  Scalar::Does: 0.004
   Test::Pod: 0
   autodie: 0
   namespace::clean: 0.19
@@ -46,4 +46,4 @@ resources:
   homepage: https://metacpan.org/release/P5U
   license: http://dev.perl.org/licenses/
   repository: https://bitbucket.org/tobyink/p5-p5u
-version: 0.005
+version: 0.006
