@@ -14,10 +14,10 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 7652ae0906409a432144183ab2cd149dbb86f418 Changes
+SHA1 dd880b5bd688317dd27eadfdd682e8871391d281 Changes
 SHA1 cc087c3dd6e1b519c680e68cd0231735a68300a0 LICENSE
 SHA1 affe6591882d6e09400b00343a58dc8354e79a45 MANIFEST
-SHA1 7752b24d433b000de9e78967ab202de91b34b6ad META.yml
+SHA1 77592b5166e173b745b896f5ff1141749d5b3cd1 META.yml
 SHA1 7150e5e086ef493e1e527a1eeec44a8344b80db6 Makefile.PL
 SHA1 299a98534c478ed6c3ea2d487667dee02a87fe30 README
 SHA1 a357506e1e49e01ab813922cf7e836b259fe87e1 TODO
@@ -43,34 +43,34 @@ SHA1 0e0eed2e69d9583081868cf4f220068d0a018568 inc/Scalar/Util.pm
 SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
 SHA1 8105c0510a773b56840995fb4dd2dc64fe9ddaee inc/unicore/Name.pm
 SHA1 36df501c7c9b73c282c5174ed54d8283b2f2cbf2 inc/utf8.pm
-SHA1 48675263e87f5614c33841be6f7ac5d5d0ad67ac lib/P5U.pm
+SHA1 e2c40f8ed8e65495f9d627a75d2be3d28551db7f lib/P5U.pm
 SHA1 88138f1b5336fd149f4dc588634a28fa3d236c50 lib/P5U/Command.pm
-SHA1 fc9893f31e0efa2fd99b256f11a01d37ba082015 lib/P5U/Command/About.pm
-SHA1 c830700080f27a81c8e6cd0abb3d0ebe650cd179 lib/P5U/Command/Aliases.pm
-SHA1 e10f484ecd75d6418d073794db66ab7ca64a4a4f lib/P5U/Command/AutoProve.pm
-SHA1 db68d922de687cac0206546f3060df66fc1799ae lib/P5U/Command/Commands.pm
-SHA1 491712c54876f2cb3c2bb982c7cc355fca3fd239 lib/P5U/Command/DebianRelease.pm
-SHA1 f1e4ccaaebc8da6cb0ed0a4156ab21c706151756 lib/P5U/Command/Reprove.pm
-SHA1 5b1ad013fe7d6bd4daf2bd652cabd9461672f39a lib/P5U/Command/TestPod.pm
-SHA1 fb86fe7000a28f53eb69bba5158f23f5fdaeb0a4 lib/P5U/Command/Testers.pm
-SHA1 c1367e53c226cba6979015e992c56602371420f8 lib/P5U/Command/Version.pm
-SHA1 033e5045f3d3b826487864c9321d1a07dbbab2f3 lib/P5U/Command/Whois.pm
-SHA1 5c6602c2e41e49d964381d02e5dcc696862f4b4b lib/P5U/Lib/AutoProve.pm
-SHA1 5b9e0ff0145004bc85b27080691ec2e7c4d7f082 lib/P5U/Lib/DebianRelease.pm
-SHA1 ab2e45e9ecc6468aefb83d2b10bc56ebae6e18e4 lib/P5U/Lib/Reprove.pm
-SHA1 7b9cc14cb169e645c71845ebd656bd687d42441e lib/P5U/Lib/TestPod.pm
-SHA1 fd31012e41f77e6001fe9ad13435509a47ebfbdb lib/P5U/Lib/Testers.pm
-SHA1 980db6b0f3c0077b28117e35d9b55eefdbfe8a09 lib/P5U/Lib/Version.pm
-SHA1 ed11c4cfa3644e1381e2271ddb28933fe56217bb lib/P5U/Lib/Whois.pm
+SHA1 01d63dd7790f430db552bbd76b29c261c65d005c lib/P5U/Command/About.pm
+SHA1 cf461b469994a54aa8e1f7d8e9ac8b7e1ca79cfd lib/P5U/Command/Aliases.pm
+SHA1 3dd621bf9dbaa2b15e60d298de1cd8a98ff23574 lib/P5U/Command/AutoProve.pm
+SHA1 38d6e1ef78d19f0a0a7b51b38638a42e5f40217b lib/P5U/Command/Commands.pm
+SHA1 1c399c6a7a878b1bcafbd2fe61601fab78aecbef lib/P5U/Command/DebianRelease.pm
+SHA1 5ae7fb4a8cf5c2abbdff137289cf7adc61a632e5 lib/P5U/Command/Reprove.pm
+SHA1 c57210c89381e803661d71eea8dcd6793c7999a6 lib/P5U/Command/TestPod.pm
+SHA1 51549a51280a7d57210f3849c94e5d40dd4ca506 lib/P5U/Command/Testers.pm
+SHA1 8abdfab4d7b3f1cd798549c6ad6a67167730c181 lib/P5U/Command/Version.pm
+SHA1 7e3d7232d8952b37901989a25828351d0bc7c4ba lib/P5U/Command/Whois.pm
+SHA1 54a5b2bbe1e16820124d17c306c053bf7c03b750 lib/P5U/Lib/AutoProve.pm
+SHA1 b9fdc5c30ba21cea3153ebd3c1154b888a04f467 lib/P5U/Lib/DebianRelease.pm
+SHA1 b8dceda83a3f7442d1d9ad21a8a8f499b78eda1f lib/P5U/Lib/Reprove.pm
+SHA1 23bf9782567e03546bc7ea00a2751a69626ed53a lib/P5U/Lib/TestPod.pm
+SHA1 39f04ed2c2f616035f1105688a64688e2d4aa8ff lib/P5U/Lib/Testers.pm
+SHA1 ec76f93b890bc6926788a3f6cad28a955f5d0f63 lib/P5U/Lib/Version.pm
+SHA1 a8d30a5734964df0c1fd9d2ffe34e0e0605b7786 lib/P5U/Lib/Whois.pm
 SHA1 cfccb0cb8974eb6d73c7a3367e9cfdf914322fd0 lib/P5U/Tutorial/Development.pod
-SHA1 f17ec59a216fb3ccb8202165d50e9c4f2c11a39f meta/changes.ttl
+SHA1 9ad226d433375dd41cf0eaf8c6d6857e81be04e4 meta/changes.ttl
 SHA1 54f8f399f6d2328b5360ca795b1fd5c7752a9c87 meta/doap.ttl
 SHA1 23f7108c15a9cfb760cee4e1b541490cd6b857d7 meta/makefile.ttl
 SHA1 c91a041cceaafb04b17655614f5357d7069f5645 t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAlBwle8ACgkQzr+BKGoqfTl5rACdG4FPYmPSY0VR0UAhTWIjC3g9
-6H0AoKrDXbaIKgQC1ND2H1GiVfGrd6CL
-=IH+o
+iEYEARECAAYFAlCG9gEACgkQzr+BKGoqfTmaVwCgk80tHDlT6PA7rbhlZNeKPdFi
+09kAn0V32ZOjGjNALBPVhuIu899RAdjO
+=KeZL
 -----END PGP SIGNATURE-----

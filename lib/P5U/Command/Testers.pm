@@ -9,7 +9,7 @@ use PerlX::Maybe 0 'maybe';
 
 BEGIN {
 	$P5U::Command::Testers::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Command::Testers::VERSION   = '0.006';
+	$P5U::Command::Testers::VERSION   = '0.007';
 };
 
 use constant {
@@ -57,7 +57,7 @@ sub execute
 		      os_data   => !!$opt->{os_data},
 		      stable    => !!$opt->{stable},
 		maybe version   =>   $opt->{version},
-		      cache_dir =>   $self->get_cachedir->stringify,
+		      cache_dir =>   $self->get_cachedir,
 	);
 	
 	if ($opt->{summary})
