@@ -9,7 +9,7 @@ use PerlX::Maybe 0 'maybe';
 
 BEGIN {
 	$P5U::Command::Version::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Command::Version::VERSION   = '0.007';
+	$P5U::Command::Version::VERSION   = '0.100';
 };
 
 use constant {
@@ -81,7 +81,7 @@ sub execute
 		push @lines, q(Not found) unless @lines;
 		
 		say "\t$_" for @lines;
-		say q() if @$args; 
+		say q() if @$args;
 	}
 }
 

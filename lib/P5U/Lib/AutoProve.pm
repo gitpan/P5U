@@ -2,7 +2,7 @@ package P5U::Lib::AutoProve;
 
 BEGIN {
 	$P5U::Lib::AutoProve::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::AutoProve::VERSION   = '0.007';
+	$P5U::Lib::AutoProve::VERSION   = '0.100';
 };
 
 use 5.010;
@@ -87,6 +87,12 @@ sub get_app
 
 __END__
 
+=pod
+
+=encoding utf-8
+
+=for stopwords chdir
+
 =head1 NAME
 
 P5U::Lib::AutoProve - support library implementing p5u's auto-prove command
@@ -123,7 +129,7 @@ on.
 %opts represents the command-line options passed to prove. When options
 have an abbreviated and full version (e.g. C<< -v >> versus C<< --verbose >>)
 the longer version is expected, without the dashes. For boolean options,
-the value is ignored; the existance of the option in the hash at all (even
+the value is ignored; the existence of the option in the hash at all (even
 with a false or undefined value) switches it on.
 
 =back
@@ -155,7 +161,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

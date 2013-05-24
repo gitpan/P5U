@@ -7,7 +7,7 @@ use P5U-command;
 
 BEGIN {
 	$P5U::Command::DebianRelease::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Command::DebianRelease::VERSION   = '0.007';
+	$P5U::Command::DebianRelease::VERSION   = '0.100';
 };
 
 use constant {
@@ -56,7 +56,7 @@ sub execute
 		if $opt->{author} && $opt->{distribution};
 	
 	my $helper = P5U::Lib::DebianRelease::->new(
-		cache_file  => $self->get_cachedir->file('allpackages.cache'),
+		cache_file  => $self->get_cachedir->child('allpackages.cache'),
 	);
 	
 	if ($opt->{author})

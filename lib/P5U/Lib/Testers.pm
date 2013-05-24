@@ -5,17 +5,19 @@ use utf8;
 
 BEGIN {
 	$P5U::Lib::Testers::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::Testers::VERSION   = '0.007';
+	$P5U::Lib::Testers::VERSION   = '0.100';
 };
 
 use Moo;
-use MooX::Types::MooseLike::Base qw< ArrayRef Bool Str InstanceOf >;
 use File::Spec       0 qw< >;
 use JSON             0 qw< from_json >;
 use LWP::Simple      0 qw< mirror is_success >;
 use List::Util       0 qw< maxstr >;
+use match::simple    0 qw< M >;
 use Object::AUTHORITY  qw< AUTHORITY >;
-use Path::Class      0 qw< dir file >;
+use Path::Tiny       0 qw< path >;
+use Type::Utils      0 qw< class_type >;
+use Types::Standard  0 qw< ArrayRef HashRef Bool Str >;
 use namespace::clean;
 
 has distro => (
@@ -43,12 +45,12 @@ has stable => (
 
 has cache_dir => (
 	is         => 'lazy',
-	isa        => InstanceOf['Path::Class::Dir'],
+	isa        => class_type { class => 'Path::Tiny' },
 );
 
 has results => (
 	is         => 'lazy',
-	isa        => ArrayRef,
+	isa        => ArrayRef[HashRef],
 );
 
 sub version_data
@@ -59,7 +61,7 @@ sub version_data
 	{
 		next unless $_->{version} eq $self->version;
 		my ($pv) = ($_->{perl} =~ /^5\.(\d+)/) or next;
-		next if $pv ~~ [9, 11, 13, 15];
+		next if $pv |M| [9, 11, 13, 15, 17];
 		my $key = $self->os_data
 			? sprintf("Perl 5.%03d, %s", $pv, $_->{ostext})
 			: sprintf("Perl 5.%03d", $pv);
@@ -134,7 +136,7 @@ sub _build_results
 		substr($self->distro, 0, 1),
 		$self->distro,
 	);
-	my $results_file = file(
+	my $results_file = path(
 		$self->cache_dir,
 		sprintf('%s.json', $self->distro),
 	);
@@ -156,17 +158,18 @@ sub _build_results
 
 sub _build_cache_dir
 {
-	my $dir = dir(
-		File::Spec::->tmpdir,
-		'CpanTesters',
-	);
-	dir($dir)->mktree unless -d $dir;
-	return $dir;
+	"Path::Tiny"->tempdir;
 }
 
 1;
 
 __END__
+
+=pod
+
+=encoding utf-8
+
+=for stopwords HoA
 
 =head1 NAME
 
@@ -175,10 +178,10 @@ P5U::Lib::Testers - support library implementing p5u's testers command
 =head1 SYNOPSIS
 
  use P5U::Lib::DebianRelease;
- use Path::Class qw(file dir);
+ use Path::Tiny qw(path);
  
  my $dr = P5U::Lib::DebianRelease->new(
-   cache_file  => file("/tmp/debian.data"),
+   cache_file => path("/tmp/debian.data"),
  );
  
  my $author_data = $dr->author_data('tobyink');
@@ -237,7 +240,7 @@ something sensible will be used.
 
 =item C<results>
 
-The CPAN testsers results, as an array of hashes. You generally do not
+The CPAN testers results, as an array of hashes. You generally do not
 want to set this yourself, but rely on this module to build it for you!
 
 =back
@@ -289,7 +292,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

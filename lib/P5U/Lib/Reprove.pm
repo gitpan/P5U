@@ -2,14 +2,13 @@ package P5U::Lib::Reprove;
 
 BEGIN {
 	$P5U::Lib::Reprove::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::Reprove::VERSION   = '0.007';
+	$P5U::Lib::Reprove::VERSION   = '0.100';
 };
 
 use 5.010;
 use autodie;
 
 use Moo;
-use MooX::Types::MooseLike::Base qw< ArrayRef Bool InstanceOf Str >;
 use App::Prove qw//;
 use Class::Load qw/load_class/;
 use Carp qw/confess/;
@@ -17,10 +16,12 @@ use JSON qw/from_json/;
 use File::pushd qw/pushd/;
 use File::Temp qw//;
 use Module::Info qw//;
-use Path::Class qw//;
+use Path::Tiny qw//;
 use LWP::Simple qw/get/;
 use Module::Manifest qw//;
 use Object::AUTHORITY qw/AUTHORITY/;
+use Types::Standard qw< ArrayRef Bool Str >;
+use Type::Utils qw< class_type >;
 
 has author => (
 	is         => 'lazy',
@@ -46,12 +47,12 @@ has manifest => (
 
 has testdir => (
 	is         => 'lazy',
-	isa        => InstanceOf['Path::Class::Dir'],
+	isa        => class_type { class => 'Path::Tiny' },
 );
 
 has working_dir => (
 	is         => 'lazy',
-	isa        => InstanceOf['Path::Class::Dir'],
+	isa        => class_type { class => 'Path::Tiny' },
 );
 
 has verbose => (
@@ -158,26 +159,26 @@ sub _build_author
 sub _build_manifest
 {
 	my $self = shift;
-	my $fh = $self->working_dir->file('MANIFEST')->openw;
+	my $fh = $self->working_dir->child('MANIFEST')->openw;
 	binmode( $fh, ":utf8");
 	$self->_getfile_to_handle('MANIFEST', $fh);
 	close $fh;
 	
 	my $manifest = Module::Manifest->new;
-	$manifest->open(manifest => $self->working_dir->file('MANIFEST')->stringify);
+	$manifest->open(manifest => $self->working_dir->child('MANIFEST')->stringify);
 	return [ $manifest->files ];
 }
 
 sub _build_testdir
 {
 	my $self    = shift;
-	my $testdir = $self->working_dir->subdir('t');
+	my $testdir = $self->working_dir->child('t');
 	$testdir->mkpath;
 	
 	foreach my $file ($self->test_files)
 	{
-		my $dest = $testdir->file($file);
-		$dest->dir->mkpath;
+		my $dest = $testdir->child($file);
+		Path::Tiny::->new($dest->dirname)->mkpath;
 		$self->_getfile_to_handle($file, $dest->openw);
 	}
 	
@@ -187,9 +188,7 @@ sub _build_testdir
 sub _build_working_dir
 {
 	my $self = shift;
-	Path::Class::Dir::->new(
-		File::Temp::->newdir,
-	);
+	Path::Tiny::->tempdir;
 }
 
 sub _app_prove_args
@@ -212,6 +211,12 @@ sub run
 1;
 
 __END__
+
+=pod
+
+=encoding utf-8
+
+=for stopwords refactored MetaCPAN
 
 =head1 NAME
 
@@ -241,7 +246,7 @@ It makes a number of assumptions about how a distribution's test cases are
 structured, but these assumptions do tend to hold in most cases.
 
 This work was previously released as B<Module::Reprove>, but has now been
-rafactored and integrated with L<P5U>.
+refactored and integrated with L<P5U>.
 
 =head2 Constructor
 
@@ -277,7 +282,7 @@ Boolean indicating whether output should be verbose. Optional, defaults to false
 
 =item C<< working_dir >>
 
-A L<Path::Class::Dir> object pointing to a directory where all the working
+A L<Path::Tiny> object pointing to a directory where all the working
 will be done. If you don't provide one to the constructor, P5U::Lib::Reprove
 is sensible enough to create a temporary directory for working in (and delete
 it afterwards).
@@ -290,7 +295,7 @@ to build it.
 
 =item C<< testdir >>
 
-A L<Path::Class::Dir> object pointing to a directory where test cases
+A L<Path::Tiny> object pointing to a directory where test cases
 are stored. Don't provide this to the constructor - just allow
 P5U::Lib::Reprove to build it.
 
@@ -342,7 +347,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2011-2012 by Toby Inkster.
+This software is copyright (c) 2011-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

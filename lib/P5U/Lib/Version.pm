@@ -5,7 +5,7 @@ use utf8;
 
 BEGIN {
 	$P5U::Lib::Version::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::Version::VERSION   = '0.007';
+	$P5U::Lib::Version::VERSION   = '0.100';
 };
 
 use JSON qw< from_json >;
@@ -69,6 +69,12 @@ sub _format_hits
 
 __END__
 
+=pod
+
+=encoding utf-8
+
+=for stopwords BackPAN MetaCPAN
+
 =head1 NAME
 
 P5U::Lib::Version - support library implementing p5u's version command
@@ -89,7 +95,7 @@ This is a support library for the version command.
 =item C<< local_module_info($module) >>
 
 Locates a Perl module on the local machine, searching through @INC.
-For each file found (there may be mre than one) finds the version
+For each file found (there may be more than one) finds the version
 number of the module.
 
 Returns a list of strings formatted like C<< "FILE: VERSION" >>.
@@ -125,7 +131,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

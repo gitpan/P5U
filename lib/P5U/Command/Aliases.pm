@@ -7,7 +7,7 @@ use P5U-command;
 
 BEGIN {
 	$P5U::Command::Aliases::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Command::Aliases::VERSION   = '0.007';
+	$P5U::Command::Aliases::VERSION   = '0.100';
 };
 
 use constant {
@@ -20,7 +20,7 @@ sub description
 <<'DESCRIPTION'
 Most p5u commands can be invoked with shorter aliases.
 
-	p5u version Mouse 
+	p5u version Mouse
 	p5u v Mouse           # same thing
 
 The aliases command (which, ironically, has no shorter alias) shows existing
@@ -44,15 +44,16 @@ sub execute
 {
 	my ($self, $opt, $args) = @_;
 	
+	require match::smart;
 	my $filter = scalar(@$args)
 		? $args
-		: sub { not(shift ~~ [qw(aliases commands help)]) };
+		: sub { !match::smart::match(shift, [qw(aliases commands help)]) };
 	
 	foreach my $cmd (sort $self->app->command_plugins)
 	{
 		my ($preferred, @aliases) = $cmd->command_names;
 		printf("%-16s: %s\n", $preferred, "@aliases")
-			if $preferred ~~ $filter;
+			if match::smart::match($preferred, $filter);
 	}
 }
 

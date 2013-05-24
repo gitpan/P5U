@@ -6,12 +6,11 @@ use utf8;
 
 BEGIN {
 	$P5U::Command::TestPod::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Command::TestPod::VERSION   = '0.007';
+	$P5U::Command::TestPod::VERSION   = '0.100';
 };
 
 use Object::AUTHORITY;
-use Path::Class;
-use Path::Class::Rule;
+use Path::Iterator::Rule;
 use Test::More;
 use Test::Pod;
 
@@ -25,16 +24,17 @@ sub test_pod
 {
 	my $self = shift;
 	
-	my @files = 
+	my @files =
 		_uniq
+		map "Path::Tiny"->new($_),
 		map {
 			(-d $_)
-				? Path::Class::Rule::->new->or(
-					Path::Class::Rule::->new->perl_module,
-					Path::Class::Rule::->new->perl_pod,
-					Path::Class::Rule::->new->perl_script,
+				? Path::Iterator::Rule::->new->or(
+					Path::Iterator::Rule::->new->perl_module,
+					Path::Iterator::Rule::->new->perl_pod,
+					Path::Iterator::Rule::->new->perl_script,
 					)->all($_)
-				: Path::Class::File::->new($_)
+				: $_
 		} @_;
 	
 	plan tests => scalar @files;
@@ -44,6 +44,12 @@ sub test_pod
 1;
 
 __END__
+
+=pod
+
+=encoding utf-8
+
+=for stopwords testpod
 
 =head1 NAME
 
@@ -89,7 +95,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

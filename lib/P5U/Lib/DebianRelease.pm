@@ -7,15 +7,17 @@ use utf8;
 
 BEGIN {
 	$P5U::Lib::DebianRelease::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::DebianRelease::VERSION   = '0.007';
+	$P5U::Lib::DebianRelease::VERSION   = '0.100';
 };
 
 use Moo;
-use MooX::Types::MooseLike::Base qw< HashRef InstanceOf >;
 use IO::Uncompress::Gunzip qw< gunzip $GunzipError >;
 use JSON             2.00  qw< from_json >;
 use LWP::Simple      0     qw< get >;
+use match::smart     0     qw< M >;
 use Object::AUTHORITY qw/AUTHORITY/;
+use Type::Utils      0     qw< class_type >;
+use Types::Standard  0.004 qw< HashRef >;
 
 my $json   = JSON::->new->allow_nonref;
 
@@ -34,8 +36,8 @@ has debian => (
 
 has cache_file => (
 	is         => 'ro',
-	isa        => InstanceOf['Path::Class::File'],
 	required   => 1,
+	isa        => class_type { class => 'Path::Tiny' },
 );
 
 sub _build_debian
@@ -44,13 +46,16 @@ sub _build_debian
 	my %pkgs;
 	unless ((-f $self->cache_file) && (-M _) < 7)
 	{
-		my $res = get "http://packages.debian.org/unstable/allpackages?format=txt.gz";
-		gunzip(\$res => $self->cache_file->stringify)
+		my $res = get "http://packages.debian.org/unstable/allpackages?format=txt.gz"
+			or die "get failed\n";
+		($res =~ /^All Debian Package/is)
+			? $self->cache_file->spew([$res])
+			: gunzip(\$res => $self->cache_file->stringify)
 			or die "gunzip failed: $GunzipError\n";
 	}
-	for ($self->cache_file->slurp)
+	for ($self->cache_file->lines_utf8)
 	{
-		next unless /^(lib\S+?-perl) \((\S+).*\)/;
+		next unless /^(lib\S+?-perl) \(([^\s\)]+).*\)/;
 		$pkgs{$1} = $2;
 	}
 	\%pkgs
@@ -85,10 +90,10 @@ sub format_report
 			(my $debx = $deb) =~ s/[-].+//;
 			sprintf(
 				"%-40s%15s%15s  %s\n",
-				  $dist,
-				  $cpan,
-				  $deb,
-				  ($debx eq $cpan ? q[  ] : q[!!]),
+				$dist,
+				$cpan,
+				$deb,
+				($debx eq $cpan ? q[  ] : q[!!]),
 			);
 		}
 		@$data;
@@ -121,7 +126,7 @@ sub author_data
 	for my $dist (sort keys %dists)
 	{
 		my $pkg = dist2deb($dist);
-		next unless $pkg ~~ $pkgs;
+		next unless $pkg |M| $pkgs;
 		
 		push @data => [
 			$dist,
@@ -149,6 +154,12 @@ sub distribution_data
 
 __END__
 
+=pod
+
+=encoding utf-8
+
+=for stopwords AoA libfoo-bar-perl debian-release
+
 =head1 NAME
 
 P5U::Lib::DebianRelease - support library implementing p5u's debian-release command
@@ -156,10 +167,10 @@ P5U::Lib::DebianRelease - support library implementing p5u's debian-release comm
 =head1 SYNOPSIS
 
  use P5U::Lib::DebianRelease;
- use Path::Class qw(file dir);
+ use Path::Tiny qw(path);
  
  my $dr = P5U::Lib::DebianRelease->new(
-   cache_file  => file("/tmp/debian.data"),
+   cache_file  => path("/tmp/debian.data"),
  );
  
  my $author_data = $dr->author_data('tobyink');
@@ -192,7 +203,7 @@ Creates a new instance of the class.
 
 =item C<< cache_file >>
 
-A Path::Class::File representing the location we should download Debian
+A Path::Tiny object representing the location we should download Debian
 release data to (and cache it). This is required, so provided it to the
 constructor.
 
@@ -269,7 +280,7 @@ belongs to him. Any blame is almost certainly down to the changes I've made.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

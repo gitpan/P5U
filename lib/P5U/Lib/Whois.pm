@@ -2,11 +2,11 @@ package P5U::Lib::Whois;
 
 BEGIN {
 	$P5U::Lib::Whois::AUTHORITY = 'cpan:TOBYINK';
-	$P5U::Lib::Whois::VERSION   = '0.007';
+	$P5U::Lib::Whois::VERSION   = '0.100';
 };
 
 use Moo; no warnings;
-use MooX::Types::MooseLike::Base qw< ArrayRef HashRef Maybe Num Str >;
+use Types::Standard qw< ArrayRef HashRef Maybe Num Str >;
 use JSON qw(from_json);
 use LWP::Simple qw(get);
 use Object::AUTHORITY;
@@ -16,6 +16,7 @@ use constant {
 	template_email             => '%s@cpan.org',
 	template_metacpan_data     => 'http://api.metacpan.org/v0/author/%s',
 	template_metacpan_releases => 'http://api.metacpan.org/v0/release/_search?q=author:%s+AND+status:latest&fields=name,date,abstract,status&size=5000',
+	template_metacpan_popular  => 'http://api.metacpan.org/v0/favorite/_search?q=author:%s&fields=distribution&size=5000',
 };
 
 has cpanid => (
@@ -33,7 +34,7 @@ sub _build_metacpan_data
 	from_json get sprintf __PACKAGE__->template_metacpan_data, uc shift->cpanid
 }
 
-has metacpan_releases => (
+has [qw(metacpan_releases metacpan_popular)] => (
 	is         => 'lazy',
 	isa        => ArrayRef,
 );
@@ -41,13 +42,23 @@ has metacpan_releases => (
 sub _build_metacpan_releases
 {
 	[
-		map { $_->{fields} }
-		@{
+		map $_->{fields}, @{
 			(from_json get sprintf __PACKAGE__->template_metacpan_releases, uc shift->cpanid)
 				->{hits}{hits}
 		}
 	]
 }
+
+sub _build_metacpan_popular
+{
+	my @plusplus = map $_->{fields}{distribution}, @{
+		(from_json get sprintf __PACKAGE__->template_metacpan_popular, uc shift->cpanid)
+			->{hits}{hits}
+	};
+	my %dist; $dist{$_}++ for @plusplus;
+	[ sort { $b->[1] <=> $a->[1] or $a->[0] cmp $b->[0] } map [ $_ => $dist{$_} ], keys %dist ];
+}
+
 
 has $_ => (
 	is         => 'lazy',
@@ -148,7 +159,7 @@ sub report
 		my @namespaces = $self->namespaces;
 		$report .= sprintf "\nNamespaces: %s\n" => join q(, ), @namespaces[0..9]
 			if @namespaces;
-			
+		
 		my @recent =
 			map {
 				sprintf
@@ -161,7 +172,11 @@ sub report
 			@{ $self->metacpan_releases || [] };
 		$report .= join "\n", q(), q(Recent:), @recent[0..9], q()
 			if @recent;
-		
+
+		my @popular = map sprintf('%s - %d votes', @$_), @{ $self->metacpan_popular || [] };
+		$report .= join "\n", q(), q(Popular:), @popular[0..9], q()
+			if @recent;
+
 		if (@{ $self->metacpan_data->{profile} || [] })
 		{
 			$report .= "\n";
@@ -180,6 +195,12 @@ sub report
 
 
 __END__
+
+=pod
+
+=encoding utf-8
+
+=for stopwords MetaCPAN whois co-ordinates websites
 
 =head1 NAME
 
@@ -299,7 +320,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
